@@ -64,6 +64,8 @@
     "versionbump:patch": "bun run versionbump --patch",
     "versionbump:minor": "bun run versionbump --minor",
     "versionbump:major": "bun run versionbump --major",
-    "publish": "bun run build && npm publish"
+    "publish": "bun run build && npm publish",
+    "build:mcpb": "bun build src/index.ts --outdir ./server --target node --format esm && mcpb pack",
+    "mcpb:validate": "mcpb validate manifest.json"
   }
 }
