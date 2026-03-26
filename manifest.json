@@ -1,0 +1,117 @@
+{
+  "manifest_version": "0.3",
+  "name": "mcp-server-trello",
+  "display_name": "Trello MCP Server",
+  "version": "1.7.1",
+  "description": "Trello boards integration for Claude — manage cards, lists, checklists, labels, members, and more via MCP",
+  "long_description": "A comprehensive MCP server for Trello that provides 47 tools for managing your Trello boards directly from Claude.\n\n- **Cards**: Create, update, move, archive cards with full detail support\n- **Lists & Boards**: Manage lists, boards, and workspaces\n- **Checklists**: Create and manage checklists and checklist items\n- **Comments**: Add, update, and delete card comments\n- **Attachments**: Attach images and files from URLs or base64 data\n- **Members & Labels**: Manage board members and labels\n- **Health Monitoring**: Built-in health checks and diagnostics",
+  "author": {
+    "name": "Jarad DeLorenzo",
+    "url": "https://github.com/delorenj"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/delorenj/mcp-server-trello"
+  },
+  "homepage": "https://github.com/delorenj/mcp-server-trello#readme",
+  "support": "https://github.com/delorenj/mcp-server-trello/issues",
+  "license": "MIT",
+  "keywords": [
+    "trello",
+    "kanban",
+    "project-management",
+    "task-management",
+    "board",
+    "cards",
+    "automation"
+  ],
+  "server": {
+    "type": "node",
+    "entry_point": "server/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/server/index.js"],
+      "env": {
+        "TRELLO_API_KEY": "${user_config.api_key}",
+        "TRELLO_TOKEN": "${user_config.token}",
+        "TRELLO_BOARD_ID": "${user_config.board_id}"
+      }
+    }
+  },
+  "tools": [
+    { "name": "get_cards_by_list_id", "description": "Fetch cards from a specific Trello list" },
+    { "name": "get_lists", "description": "Get all lists from a board" },
+    { "name": "get_recent_activity", "description": "Fetch recent board activity" },
+    { "name": "add_card_to_list", "description": "Create a new card in a list" },
+    { "name": "update_card_details", "description": "Update an existing card's details" },
+    { "name": "archive_card", "description": "Archive a card" },
+    { "name": "move_card", "description": "Move a card between lists" },
+    { "name": "add_list_to_board", "description": "Create a new list on a board" },
+    { "name": "archive_list", "description": "Archive a list" },
+    { "name": "get_my_cards", "description": "Get cards assigned to the current user" },
+    { "name": "attach_image_to_card", "description": "Attach an image from URL to a card" },
+    { "name": "attach_file_to_card", "description": "Attach a file from URL or local path to a card" },
+    { "name": "attach_image_data_to_card", "description": "Attach a base64/data URL image to a card" },
+    { "name": "list_boards", "description": "List all accessible boards" },
+    { "name": "set_active_board", "description": "Set the default board for operations" },
+    { "name": "list_workspaces", "description": "List all accessible workspaces" },
+    { "name": "create_board", "description": "Create a new board" },
+    { "name": "set_active_workspace", "description": "Set the active workspace" },
+    { "name": "list_boards_in_workspace", "description": "List boards in a workspace" },
+    { "name": "get_active_board_info", "description": "Get current active board information" },
+    { "name": "get_card", "description": "Get comprehensive card details" },
+    { "name": "add_comment", "description": "Add a comment to a card" },
+    { "name": "update_comment", "description": "Update an existing comment" },
+    { "name": "delete_comment", "description": "Delete a comment from a card" },
+    { "name": "get_card_comments", "description": "Get all comments on a card" },
+    { "name": "create_checklist", "description": "Create a new checklist on a card" },
+    { "name": "get_checklist_items", "description": "Get items from a checklist" },
+    { "name": "add_checklist_item", "description": "Add an item to a checklist" },
+    { "name": "find_checklist_items_by_description", "description": "Search checklist items by description" },
+    { "name": "get_acceptance_criteria", "description": "Get the Acceptance Criteria checklist" },
+    { "name": "get_checklist_by_name", "description": "Get a checklist by name with completion percentage" },
+    { "name": "update_checklist_item", "description": "Update a checklist item's state" },
+    { "name": "get_board_members", "description": "List all board members" },
+    { "name": "assign_member_to_card", "description": "Assign a member to a card" },
+    { "name": "remove_member_from_card", "description": "Remove a member from a card" },
+    { "name": "get_board_labels", "description": "Get all labels on a board" },
+    { "name": "create_label", "description": "Create a new label" },
+    { "name": "update_label", "description": "Update a label's properties" },
+    { "name": "delete_label", "description": "Delete a label" },
+    { "name": "get_card_history", "description": "Get card action history" },
+    { "name": "get_health", "description": "Basic health status check" },
+    { "name": "get_health_detailed", "description": "Comprehensive health diagnostic" },
+    { "name": "get_health_metadata", "description": "Metadata consistency verification" },
+    { "name": "get_health_performance", "description": "Performance metrics analysis" },
+    { "name": "perform_system_repair", "description": "Automated system repair" }
+  ],
+  "user_config": {
+    "api_key": {
+      "type": "string",
+      "title": "Trello API Key",
+      "description": "Your Trello API key from https://trello.com/power-ups/admin",
+      "sensitive": true,
+      "required": true
+    },
+    "token": {
+      "type": "string",
+      "title": "Trello Token",
+      "description": "Your Trello authorization token",
+      "sensitive": true,
+      "required": true
+    },
+    "board_id": {
+      "type": "string",
+      "title": "Default Board ID",
+      "description": "Optional default board ID (can be set later via set_active_board tool)",
+      "required": false
+    }
+  },
+  "compatibility": {
+    "claude_desktop": ">=0.10.0",
+    "platforms": ["darwin", "win32", "linux"],
+    "runtimes": {
+      "node": ">=18.0.0"
+    }
+  }
+}

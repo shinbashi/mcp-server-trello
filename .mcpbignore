@@ -1,0 +1,70 @@
+# Source files (bundled into server/index.js)
+/src/
+/build/
+
+# Dev/build config
+tsconfig.json
+.eslintrc.json
+.prettierrc
+
+# All node_modules (fully bundled)
+/node_modules/
+
+# Documentation and metadata
+**/*.md
+**/LICENSE*
+
+# Dev artifacts
+.env
+.env.example
+.gitignore
+/.claude/
+/.claude-flow/
+/.git/
+/.github/
+
+# Smithery / Docker / misc config
+smithery.yaml
+compose.yml
+compose.yaml
+server.json
+server.json.bak
+server.json.current
+server.schema.json
+mise.toml
+Dockerfile
+.dockerignore
+.git-commit-message-generator-config.json
+babel.config.js
+validate-server.mjs
+example.env
+
+# Examples
+/examples/
+
+# Scripts
+/scripts/
+
+# Evals
+/src/evals/
+
+# Source maps and type declarations
+**/*.js.map
+**/*.map
+**/*.d.ts
+**/*.d.cts
+**/*.d.mts
+
+# Bun lock
+bun.lock
+bun.lockb
+
+# Image assets (not needed for server)
+*.avif
+*.png
+*.jpg
+*.jpeg
+*.svg
+
+# mcpb output
+*.mcpb

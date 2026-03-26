@@ -7,6 +7,10 @@ yarn-error.log*
 # Build output
 build/
 dist/
+server/
+
+# mcpb bundle
+*.mcpb
 *.tsbuildinfo
 
 # IDE and editor files
